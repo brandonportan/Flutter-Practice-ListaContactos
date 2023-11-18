@@ -12,8 +12,7 @@ class HomePage extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: ElevatedButton(
             child: const Text('Contacto'),
-            onPressed: () =>
-                Navigator.pushNamed(context, Routes.contacto.name)),
+            onPressed: () => Navigator.pushNamed(context, Routes.lista.name)),
       ),
     );
   }

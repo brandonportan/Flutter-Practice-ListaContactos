@@ -7,9 +7,12 @@ class Contacto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final info =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
     return Scaffold(
       appBar: AppBar(),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(
             height: 100,
@@ -17,15 +20,16 @@ class Contacto extends StatelessWidget {
             child: CircleAvatar(
               backgroundColor: Colors.red,
               child: Text(
-                'B',
-                style: TextStyle(color: Colors.white, fontSize: 50),
+                info['Nombre'].toString()[0],
+                style: const TextStyle(color: Colors.white, fontSize: 50),
               ),
             ),
           ),
-          SizedBox(height: 50),
-          Text('Brandon'),
-          Divider(height: 50),
-          Row(
+          const SizedBox(height: 20),
+          Text(info['Nombre'].toString(), style: const TextStyle(fontSize: 16)),
+          Text(info['Correo'].toString(), style: const TextStyle(fontSize: 12)),
+          const Divider(height: 50),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconAndName(icono: Icons.phone_sharp, texto: "Llamar"),
@@ -36,8 +40,8 @@ class Contacto extends StatelessWidget {
               IconAndName(icono: Icons.video_camera_front, texto: "Video")
             ],
           ),
-          Divider(height: 50),
-          CardList(numero: "+504 9762-6018")
+          const Divider(height: 50),
+          CardList(numero: info['Telefono'].toString())
         ]),
       ),
     );
